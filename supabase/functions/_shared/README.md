@@ -1,0 +1,2 @@
+# Secure backend boundary
+Future Edge Functions validate the bearer token with Supabase Auth and authorize the requested organization, branch and operation. Never trust request role IDs or user-editable metadata. Use the caller JWT for normal queries so RLS applies. Service-role keys are server-only; every privileged operation must independently authorize its caller. No Edge Functions or operational business services are implemented yet. Authentication access mutations use the audited PostgreSQL RPCs in the second migration.

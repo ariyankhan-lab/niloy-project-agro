@@ -1,0 +1,8 @@
+# Security baseline and release gates
+RLS/grants enforce default denial. Database role grants are explicit and tenant-scoped; roles are never read from editable user metadata. Owners are tenant owners, not platform superusers. See DATABASE.md for exact current policies and known privileged-role bypass.
+
+Store browser-safe project URL and publishable key in local ignored configuration. Server secrets belong in Supabase function secrets or a deployment secret store. Do not expose service_role, database URLs/passwords or AI keys in VITE_*. Do not log tokens or export environment contents. Public example files contain names and empty placeholders only.
+
+Auth is invitation-first (public signup disabled). Authentication now implements verified-user first-organization bootstrap, transactional invitations/membership changes with actor authorization/audit, recovery, sign-out/cache clearing and session-guarded routes. Live local integration is verified; production verification remains separate. New accounts are provisioned only by trusted Supabase administration; no client service-role key or public signup exists. Financial/employee/health data requires narrow explicit permissions. A report viewer is not automatically granted all sensitive reports.
+
+Before production: validate every table and Storage policy against two tenants/two branches, expired and revoked users, least privilege and direct REST/RPC calls; test concurrency, transfer authority and idempotency; configure HTTPS/CSP, exact auth redirect allowlists, MFA policy, abuse/rate protections, dependency review, audit retention, backups and restore drills. None of these future gates is claimed complete by passing foundation tests.

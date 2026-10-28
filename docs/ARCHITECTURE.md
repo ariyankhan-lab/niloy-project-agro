@@ -1,0 +1,12 @@
+# Architecture decisions
+
+1. React + strict TypeScript + Vite is the responsive web entry point. Tailwind CSS and the local shadcn-style Button establish accessible UI conventions without generating unused screens. React Hook Form/Zod and TanStack Query are installed for approved future workflows; charts are deferred until real reporting exists.
+2. Supabase owns Auth, PostgreSQL, future Storage and Edge Functions. SQL is the source of truth for tenancy and integrity. Client RBAC never substitutes for RLS.
+3. Organization → branches → farm subtype unifies farms, collection centers and distribution branches. All business data carries explicit tenant/location scope. Cross-location transfer authority and elimination accounting are separate future services.
+4. Module boundaries include components, services, schemas, hooks and tests. Only app composition and modules may consume shared libraries; shared utilities cannot depend on domain implementations. No barrel exports of nonexistent functionality.
+5. English/Bangla dictionaries share keys; i18next persists a browser language preference and updates html lang. Both languages use LTR. BDT display uses Intl.NumberFormat; Asia/Dhaka governs business date display independent of client timezone. No network fonts are required; system fallback supports offline use when Bangla fonts are available.
+6. Money and quantities use exact PostgreSQL numeric; JavaScript Intl is display-only. Ledger arithmetic requires an exact decimal library and approved rules in the finance module.
+7. Tests have distinct scopes: Vitest UI/utilities, PGlite real PostgreSQL migration/RLS with minimal Auth emulation, Playwright desktop/mobile shell, and live Supabase integration where supported. CI does not pretend hosted project readiness.
+8. Shell status and planned module list are honest. The login page calls Supabase when configured and explicitly disables submission when it is not. No farm KPI or demo data stands in for implemented operational behavior. Complete one module and wait for approval.
+
+Production requirements still pending: live Auth/invitation acceptance and account provisioning/email automation, domain audit emission, operational cache isolation, Storage policies, deployment CSP and redirects, monitoring, backup/restore drills, accessibility review, performance budgets, rate limits and security review. See PROJECT_PLAN.md for delivery order.
