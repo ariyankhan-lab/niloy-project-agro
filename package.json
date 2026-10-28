@@ -29,7 +29,9 @@
     "preview:capture": "node scripts/capture-preview.mjs",
     "preview:offline": "node scripts/build-offline-preview.mjs",
     "test:deployment": "node scripts/validate-hosted-env.test.mjs",
-    "check:netlify": "node scripts/validate-hosted-env.mjs && npm run check"
+    "check:netlify": "node scripts/validate-hosted-env.mjs && npm run check",
+    "build:netlify-package": "node scripts/build-netlify-package.mjs",
+    "test:production": "playwright test --config playwright.production.config.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^6.0.1",

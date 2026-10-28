@@ -4,7 +4,7 @@
 `netlify.toml` declares Node 24, `npm run check:netlify`, the `dist` output and the SPA rewrite for /login, /access and other deep links. Netlify's native Git integration is the deployment trigger; no Netlify token or browser service key is committed. The build runs lint, typecheck, unit/database tests, hosted-environment tests and Vite production build. GitHub Actions additionally runs desktop/mobile browser tests.
 
 ## Existing target site
-User-supplied site: https://stupendous-mousse-57e344.netlify.app. Preserve this site and URL. Its Git connection/build settings have not been verified or changed by the agent.
+User-supplied site: https://leafy-druid-f1e387.netlify.app. Preserve this site and URL. Its Git connection/build settings have not been verified or changed by the agent.
 
 ## One-time activation in the user's Netlify account
 For an existing Netlify site, connect its build repository to **ariyankhan-lab/niloy-project-agro**, select **main** as the production branch, and permit Netlify's GitHub integration to read this repository. For a new site, import that repository from GitHub. Use the existing site when retaining its current URL; do not create duplicate sites unnecessarily.
@@ -34,3 +34,10 @@ The reviewed application and Netlify configuration were pushed to main successfu
 
 ## Verification and unresolved activation
 Local checks verify the source and production bundle. After site linking, verify the actual Netlify deploy identifies the expected Git commit, the root page loads, /login works as a direct URL, static assets load, and the UI/backend status is accurate. Copy the real Netlify URL into the handoff only after it exists. Hosted deployment and future automatic redeploy are not verified until Netlify observes an actual pushed revision.
+
+## Correct HTML/CSS deployment package
+A saved Codex/ChatGPT webpage is not the FarmLife application. Upload the compiled FarmLife dist output with its assets, not a browser-saved page or the source index.html. `npm run build:netlify-package` creates `.local/netlify-package/dist` using explicit public process settings only; local .env files are excluded. The script checks FarmLife title, compiled JS/CSS references, required layout styles and routing/header files. `npm run test:production` tests the actual built output, CSS MIME/computed layout, assets, login deep link, mobile width and bilingual UI.
+
+public/_redirects and public/_headers are copied into every normal Vite build, including manual uploads that do not read netlify.toml. Native Git builds still use netlify.toml. There is no assertion that the screenshot's missing styles were a source-code CSS defect: its Codex content suggests the wrong HTML may have been uploaded; target-site inspection remains blocked by current egress policy until the saved domain changes are applied.
+
+Direct authenticated deployment to this existing site requires NETLIFY_AUTH_TOKEN supplied securely in environment settings with api.netlify.com as its destination. A secret requirement and exact target/API domain additions were saved for review; no credential value was supplied and no authenticated publish is claimed. Native Git linking is an alternative that does not require sharing a Netlify token with this runtime.

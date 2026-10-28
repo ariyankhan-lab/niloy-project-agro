@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Production HTML/CSS deployment package
+- Updated the target to the user-specified leafy-druid-f1e387.netlify.app site.
+- Added manual-upload SPA redirects/security headers, credential-free production packaging and desktop/mobile checks of actual compiled styling/assets/deep links.
+- Added production-package checks to GitHub CI and created a compiled deployment ZIP.
+- Diagnosed cached HTTP 304 asset responses in the new test and retained checks for actual failed asset loads.
+- Direct Netlify publication remains pending authenticated account access and network configuration activation; no successful deployment is claimed.
+
 ## Unreleased — Netlify automation
 - Added native Git-based Netlify build configuration, SPA rewrite, security headers and hosted-environment validation.
 - Reject local API endpoints, partial backend settings, URL-embedded credentials and service-role/secret keys in hosted builds.
