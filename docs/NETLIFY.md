@@ -29,5 +29,8 @@ For live authentication, set both **public** settings in Netlify's build environ
 
 The local development account/database is not uploaded to Netlify. The frontend deployment does not create production admins, migrate PostgreSQL or deploy the local gateway, Docker containers, Storage or Edge Functions. Do not expose the local development gateway publicly.
 
+## GitHub source publication
+The reviewed application and Netlify configuration were pushed to main successfully. Read-only Git verification matched initial source commit bc15c0f0f1b8e1cc8b7090b6cf93537de750514f. GitHub REST calls and direct checks of the Netlify site are blocked by this runtime’s egress policy; no deployment success is inferred. Netlify account-side repository linking remains the required activation step.
+
 ## Verification and unresolved activation
 Local checks verify the source and production bundle. After site linking, verify the actual Netlify deploy identifies the expected Git commit, the root page loads, /login works as a direct URL, static assets load, and the UI/backend status is accurate. Copy the real Netlify URL into the handoff only after it exists. Hosted deployment and future automatic redeploy are not verified until Netlify observes an actual pushed revision.

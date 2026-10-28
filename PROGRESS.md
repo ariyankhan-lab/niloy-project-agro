@@ -1,6 +1,6 @@
 # Verified progress
 
-As of 2026-10-28. Current release: 0.2.0 development preview. Foundation and Authentication & Roles implementation are verified locally. The other 21 modules remain planned; no production release, hosted deployment, commit or push is claimed.
+As of 2026-10-28. Current release: 0.2.0 development preview. Foundation and Authentication & Roles implementation are verified locally. The other 21 modules remain planned. Source and Netlify configuration have now been committed/pushed to main under the user’s automation authorization; no production release or verified Git-connected Netlify deployment is claimed.
 
 ## Completed steps
 1. Inspected the initially empty repository and read/reconciled all six pages of the uploaded master plan.
@@ -22,7 +22,7 @@ As of 2026-10-28. Current release: 0.2.0 development preview. Foundation and Aut
 - Browser binaries are supplied by installed system Chromium through PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH; TLS verification was never disabled.
 
 ## Current runtime and preview
-Vite runs on port 5173; the local development gateway on 54321 and the four labeled Auth-development containers provide PostgreSQL/Auth/REST/Mailpit. No public hosted preview URL exists. Actual captured images are in /workspace/artifacts/farmlife; use preview:capture to regenerate them. Processes must restart after snapshot restoration; consult docs/LOCAL_AUTH.md and the saved startup instructions.
+Vite runs on port 5173; the local development gateway on 54321 and the four labeled Auth-development containers provide PostgreSQL/Auth/REST/Mailpit. The user supplied https://stupendous-mousse-57e344.netlify.app as their preview site; its repository connection and current hosted content are not verified by this environment. Actual captured images are in /workspace/artifacts/farmlife; use preview:capture to regenerate them. Processes must restart after snapshot restoration; consult docs/LOCAL_AUTH.md and the saved startup instructions.
 
 No demo login/password is shipped. To use real local accounts, the trusted local administrator provisions their chosen email/password using dev:create-user, then signs in. Invite links are shared privately with existing verified accounts. Public signup remains disabled; automatic invitation email/account provisioning is intentionally not implemented. Mailpit is local test email capture, not external email delivery.
 
@@ -39,3 +39,6 @@ At the user's explicit request, provisioned/reset a default administrator in the
 
 ## Netlify automation preparation
 At the user's request, prepared netlify.toml (Node 24, dist, SPA redirects and security headers), hosted build validation, seven deployment-security checks and an approved-work commit/push procedure in AGENTS.md. `npm run check:netlify` passed from a clean source export with no local .env/runtime files: lint/typecheck, 59 Vitest tests, seven deployment checks and production build. GitHub read-only Git access succeeds; GitHub REST API access is denied by network policy. No Netlify authentication is available in the runtime. The user supplied https://stupendous-mousse-57e344.netlify.app as the existing target site; one-time GitHub/main connection and actual automatic deployment remain external activation/verification steps. No Netlify token, default development password or local backend configuration is included in deployable source.
+
+### GitHub publication verified
+Initial reviewed source/deployment commit bc15c0f0f1b8e1cc8b7090b6cf93537de750514f was pushed successfully to origin/main; a subsequent git ls-remote matched that exact remote SHA. No force push was used. Private .env.local, .local credentials/runtime data, node_modules, build output and Netlify local state were excluded and checked. Public-site verification from this environment was denied by its HTTP egress policy (403); this does not establish that the user’s site is offline. Git-linked Netlify activation is still pending the user’s one-time account-side connection to this repository/main. The local default administrator/database is not part of this upload.

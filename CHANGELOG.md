@@ -5,7 +5,7 @@
 - Reject local API endpoints, partial backend settings, URL-embedded credentials and service-role/secret keys in hosted builds.
 - Added seven deployment validation checks and documented the authorized verified-commit/push workflow.
 - Clean-source Netlify build command passed lint/typecheck, 59 unit/database tests, seven deployment checks and production build.
-- Existing target site supplied by the user; Git connection activation and successful hosted auto-deploy are not yet verified.
+- Existing target site supplied by the user; reviewed source and configuration pushed to GitHub main and remote SHA verified. Netlify account-side Git connection activation and successful hosted auto-deploy are not yet verified.
 
 ## Unreleased — Preview access correction
 - Provisioned a local-only default administrator at the user’s explicit request; verified real login/owner access without committing credentials.
